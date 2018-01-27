@@ -1,0 +1,26 @@
+<h1>Cadastrar Vinho</h1>
+
+<form [formGroup]="cadastro">
+  <div>
+    <div>
+      <label for="nome">Nome</label>
+      <input id="nome" type="text" name="nome" formControlName="nome" [(ngModel)]="vinho.nome">
+    </div>
+
+    <div>
+      <label for="login">Tipo</label>
+      <input id="tipo" type="text" name="tipo" formControlName="tipo" [(ngModel)]="vinho.tipo">
+    </div>
+
+    <div>
+      <label for="senha">Peso</label>
+      <input id="peso" type="number" name="peso" formControlName="peso" [(ngModel)]="vinho.peso">
+    </div>
+
+    <div>
+      <button [class.disabled]="cadastro.invalid" (click)="cadastrar()">
+        Cadastrar
+      </button>
+    </div>
+  </div>
+</form>
