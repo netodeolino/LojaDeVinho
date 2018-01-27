@@ -20,7 +20,8 @@ import { VinhosComponent } from './vinhos/vinhos.component';
     VinhosComponent
   ],
   exports: [
-    CadastrarVinhoComponent
+    CadastrarVinhoComponent,
+    VinhosComponent
   ],
   providers: [
     VinhoService

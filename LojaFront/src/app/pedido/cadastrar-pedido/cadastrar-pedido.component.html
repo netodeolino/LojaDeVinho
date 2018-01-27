@@ -1,0 +1,26 @@
+<h1>Cadastrar Pedido</h1>
+
+<form [formGroup]="cadastro">
+  <div>
+    <div>
+      <label for="quantidade">Quantidade</label>
+      <input id="quantidade" type="number" name="quantidade" formControlName="quantidade" [(ngModel)]="pedido.quantidade">
+    </div>
+
+    <div>
+      <label for="distancia">Distância</label>
+      <input id="distancia" type="number" name="distancia" formControlName="distancia" [(ngModel)]="pedido.distancia">
+    </div>
+
+    <div>
+      <label for="frete">Frete</label>
+      <input id="frete" type="number" name="frete" formControlName="frete" [(ngModel)]="pedido.frete">
+    </div>
+
+    <div>
+      <button [class.disabled]="cadastro.invalid" (click)="cadastrar()">
+        Cadastrar
+      </button>
+    </div>
+  </div>
+</form>

@@ -1,13 +1,14 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h1>
-  Bem vindo ao {{title}}!
-  </h1>
-  <img width="300" src="http://s1.1zoom.net/big0/106/365806-svetik.jpg">
+  <h1> Bem vindo ao {{title}}! </h1>
+  <img width="100" src="http://s1.1zoom.net/big0/106/365806-svetik.jpg">
 </div>
-<ul>
-  <li routerLinkActive="active"><a routerLink="/vinho/cadastrar">Setores</a></li>
-</ul>
+<nav>
+  <a routerLinkActive="active" routerLink="/vinho/cadastrar">Cadastrar Vinho</a>
+  <a routerLinkActive="active" routerLink="/vinho/listar">Listar Vinhos</a>
+  <a routerLinkActive="active" routerLink="/pedido/cadastrar">Cadastrar Pedido</a>
+  <a routerLinkActive="active" routerLink="/pedido/listar">Listar Pedidos</a>
+</nav>
 <main>
   <router-outlet></router-outlet>
 </main>
