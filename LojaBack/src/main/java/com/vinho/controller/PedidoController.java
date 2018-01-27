@@ -1,6 +1,9 @@
 package com.vinho.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,5 +23,10 @@ public class PedidoController {
 	public String salvar(@RequestBody Pedido pedido){
 		pedidoService.salvar(pedido);
 		return "sucesso";
+	}
+	
+	@GetMapping(path="/listar")
+	public List<Pedido> listar(){
+		return pedidoService.listar();
 	}
 }

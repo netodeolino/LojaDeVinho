@@ -3,18 +3,18 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Rx';
 
-import { Vinho } from "./../_models/vinho";
+import { Pedido } from "./../_models/pedido";
 
 @Injectable()
-export class VinhoService {
+export class PedidoService {
 
   private apiUrl:string = 'http://localhost:8080/';
   private options: RequestOptions;
-  vinho: Vinho;
+  pedido: Pedido;
 
   constructor(private http: Http) { }
 
-  cadastrarVinho(vinho: Vinho): Observable<String> {
+  cadastrarPedido(pedido: Pedido): Observable<String> {
     let header = new Headers();
     header.append('Content-Type', 'application/json');
     header.append('Access-Control-Allow-Origin', '*');
@@ -24,14 +24,14 @@ export class VinhoService {
 
     this.options = new RequestOptions({ headers: header });
 
-    return this.http.post(this.apiUrl + "vinho/cadastrar", vinho, this.options)
+    return this.http.post(this.apiUrl + "pedido/cadastrar", pedido, this.options)
       .map(
         res => { return res.text(); }
       );
   }
 
-  listarVinhos(): Observable<Vinho[]> {
-    return this.http.get(this.apiUrl + "vinho/listar", this.options)
+  listarPedidos(): Observable<Pedido[]> {
+    return this.http.get(this.apiUrl + "pedido/listar", this.options)
       .map(res => {
         return res.json();
       });

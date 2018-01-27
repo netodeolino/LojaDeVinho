@@ -1,0 +1,22 @@
+<h1>Vinhos</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Nome</th>
+    <th>Tipo</th>
+    <th>Peso</th>
+    <th>Pedido</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let vinho of vinhos">
+    <td>{{ vinho.nome }}</td>
+    <td>{{ vinho.tipo }}</td>
+    <td>{{ vinho.peso }}</td>
+    <td *ngIf="vinho.pedido != null">{{ vinho.pedido.id }}</td>
+  </tr>
+  </tbody>
+</table>
+<div>
+  <a routerLink="/vinho/cadastrar">Cadastrar Vinho</a>
+</div>

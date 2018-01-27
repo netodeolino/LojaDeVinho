@@ -28,5 +28,5 @@ public class VinhoController {
 	@GetMapping(path="/listar")
 	public List<Vinho> listar(){
 		return vinhoService.listar();
-}
+	}
 }
