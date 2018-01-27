@@ -29,4 +29,11 @@ export class VinhoService {
         res => { return res.text(); }
       );
   }
+
+  listarVinhos(): Observable<Vinho[]> {
+    return this.http.get(this.apiUrl + "vinho/listar", this.options)
+      .map(res => {
+        return res.json();
+      });
+  }
 }

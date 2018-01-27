@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VinhoService } from './vinho.service';
 import { VinhoRoutingModule } from './vinho.routing.module';
 import { CadastrarVinhoComponent } from './cadastrar-vinho/cadastrar-vinho.component';
+import { VinhosComponent } from './vinhos/vinhos.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { CadastrarVinhoComponent } from './cadastrar-vinho/cadastrar-vinho.compo
     VinhoRoutingModule
   ],
   declarations: [
-    CadastrarVinhoComponent
+    CadastrarVinhoComponent,
+    VinhosComponent
   ],
   exports: [
     CadastrarVinhoComponent
