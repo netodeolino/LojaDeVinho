@@ -5,5 +5,5 @@ export class Pedido {
     quantidade: number;
     distancia: number;
     frete: number;
-    produtos: Vinho[] = [];
+    vinhos: Vinho[] = [];
 }

@@ -38,7 +38,7 @@ export class CadastrarVinhoComponent implements OnInit {
       res => {
         this.vinho = new Vinho();
         console.log("Vinho adicionado com sucesso!", 3000, "green");
-        this.router.navigate(['vinho']);
+        this.router.navigate(['vinho/listar']);
       },
       err => console.log("Ocorreu um erro ao adicionar o Vinho. Tente novamente mais tarde.", 3000, "red")
     );

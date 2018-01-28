@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class Vinho {
@@ -18,9 +17,6 @@ public class Vinho {
 	private String tipo;
 	
 	private Double peso;
-	
-	@ManyToOne
-	private Pedido pedido;
 
 	public Long getId() {
 		return id;
@@ -52,13 +48,5 @@ public class Vinho {
 
 	public void setPeso(Double peso) {
 		this.peso = peso;
-	}
-
-	public Pedido getPedido() {
-		return pedido;
-	}
-
-	public void setPedido(Pedido pedido) {
-		this.pedido = pedido;
 	}
 }
