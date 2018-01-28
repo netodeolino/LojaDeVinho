@@ -2,13 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from "@angular/forms";
 
-import { ViewContainerRef } from '@angular/core';
-
 import { Pedido } from './../../_models/pedido';
 import { Vinho } from './../../_models/vinho';
 
 import { PedidoService } from './../pedido.service';
 import { VinhoService } from './../../vinho/vinho.service';
+import { CarrinhoService } from './../../carrinho.service';
 
 @Component({
   selector: 'app-cadastrar-pedido',
@@ -20,13 +19,15 @@ export class CadastrarPedidoComponent implements OnInit {
   cadastro: any = {};
   pedido: Pedido = new Pedido();
   vinhos: Vinho[] = [];
-  vinhosDoPedido: Vinho[] = [];
+  peso: number = 0;
+  frete: number = 0;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private servicePedido: PedidoService,
-    private serviceVinho: VinhoService
+    private serviceVinho: VinhoService,
+    private carrinhoService: CarrinhoService
   ) { }
 
   ngOnInit() {
@@ -44,15 +45,17 @@ export class CadastrarPedidoComponent implements OnInit {
   }
 
   cadastrar() {
-    let kilos: number = this.calcularKilos(this.vinhosDoPedido);
-    let frete: number = this.calcularTotalFrete(kilos);
+    this.peso = this.calcularKilos(this.carrinhoService.vinhos);
+    this.frete = this.calcularTotalFrete(this.peso);
 
-    this.pedido.frete = frete;
-    this.pedido.vinhos = this.vinhosDoPedido;
+    this.pedido.frete = this.frete;
+    this.pedido.vinhos = this.carrinhoService.vinhos;
 
     this.servicePedido.cadastrarPedido(this.pedido).subscribe(
       res => {
         this.pedido = new Pedido();
+        this.peso = 0;
+        this.frete = 0;
         console.log("Pedido adicionado com sucesso!", 3000, "green");
         this.router.navigate(['pedido/listar']);
       },
@@ -71,13 +74,19 @@ export class CadastrarPedidoComponent implements OnInit {
   }
 
   adicionarVinhoPedido(vinho) {
-    if (this.vinhosDoPedido.indexOf(vinho) == -1) {
-      this.vinhosDoPedido.push(vinho);
+    if (this.carrinhoService.adicionarVinhoNoCarrinho(vinho)) {
+      console.log("Vinho adicionado ao Carrinho com sucesso!", 3000, "green");
+    } else {
+      console.log("Erro ao adicionar Vinho no Carrinho de Compras");
     }
   }
 
   removerVinhoPedido(vinho) {
-    this.vinhosDoPedido.splice(this.vinhosDoPedido.indexOf(vinho), 1);
+    if (this.carrinhoService.removerVinhoDoCarrinho(vinho)) {
+      console.log("Vinho removido do Carrinho com sucesso!", 3000, "green");
+    } else {
+      console.log("Erro ao remover Vinho do Carrinho de Compras");
+    }
   }
 
   calcularKilos(vinhos) {

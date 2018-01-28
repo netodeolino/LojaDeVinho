@@ -1,0 +1,10 @@
+<div *ngFor="let vinho of vinhos">
+  <div class="card">
+   <img src="http://s1.1zoom.net/big0/106/365806-svetik.jpg" alt="Vinho" style="width:100%">
+   <div style="text-align: center;">
+     <h4><b>{{ vinho.nome }}</b></h4>
+     <p><b>Tipo</b> {{ vinho.tipo }} <b>Peso</b> {{ vinho.peso }}kg</p>
+     <button (click)="adicionarVinhoPedido(vinho)">Adicionar ao carrinho</button>
+   </div>
+ </div>
+</div>

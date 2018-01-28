@@ -31,6 +31,13 @@ export class VinhoService {
   }
 
   listarVinhos(): Observable<Vinho[]> {
+    return this.http.get(this.apiUrl + "vinho/listardisponiveis", this.options)
+      .map(res => {
+        return res.json();
+      });
+  }
+
+  listarTodosVinhos(): Observable<Vinho[]> {
     return this.http.get(this.apiUrl + "vinho/listar", this.options)
       .map(res => {
         return res.json();

@@ -3,6 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 const appRoutes: Routes = [
     {
+        path: '',
+        loadChildren: 'app/dashboard/dashboard.module#DashboardModule'
+    },
+    {
         path: 'vinho',
         loadChildren: 'app/vinho/vinho.module#VinhoModule'
     },

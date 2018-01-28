@@ -1,14 +1,17 @@
 <!--The content below is only a placeholder and can be replaced.-->
+<ul>
+  <li style="background-color:#009900;"><a routerLinkActive="active" routerLink="/">Home</a></li>
+  <li><a routerLinkActive="active" routerLink="/vinho/cadastrar">Cadastrar Vinho</a></li>
+  <li><a routerLinkActive="active" routerLink="/vinho/listar">Listar Vinhos</a></li>
+  <li><a routerLinkActive="active" routerLink="/pedido/cadastrar">Cadastrar Pedido</a></li>
+  <li><a routerLinkActive="active" routerLink="/pedido/listar">Listar Pedidos</a></li>
+  <li style="float:right; background-color:#b3003b;"><a class="active" routerLinkActive="active" routerLink="#">Carrinho</a></li>
+</ul>
+
 <div style="text-align:center">
   <h1> Bem vindo ao {{title}}! </h1>
   <img width="100" src="http://s1.1zoom.net/big0/106/365806-svetik.jpg">
 </div>
-<nav>
-  <a routerLinkActive="active" routerLink="/vinho/cadastrar">Cadastrar Vinho</a>
-  <a routerLinkActive="active" routerLink="/vinho/listar">Listar Vinhos</a>
-  <a routerLinkActive="active" routerLink="/pedido/cadastrar">Cadastrar Pedido</a>
-  <a routerLinkActive="active" routerLink="/pedido/listar">Listar Pedidos</a>
-</nav>
-<main>
+<main class="container">
   <router-outlet></router-outlet>
 </main>
