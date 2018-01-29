@@ -41,12 +41,4 @@ export class DashboardComponent implements OnInit {
       console.log("Erro ao adicionar Vinho no Carrinho de Compras");
     }
   }
-
-  removerVinhoPedido(vinho) {
-    if (this.serviceCarrinho.removerVinhoDoCarrinho(vinho)) {
-      console.log("Vinho removido do Carrinho com sucesso!", 3000, "green");
-    } else {
-      console.log("Erro ao remover Vinho do Carrinho de Compras");
-    }
-  }
 }

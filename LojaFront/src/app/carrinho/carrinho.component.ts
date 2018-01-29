@@ -16,37 +16,35 @@ import { CarrinhoService } from './../carrinho.service';
 })
 export class CarrinhoComponent implements OnInit {
 
+  private key = '12312312';
+
   cadastro: any = {};
   pedido: Pedido = new Pedido();
+  vinhos: Vinho[] = [];
   peso: number = 0;
   frete: number = 0;
-  vinhos: Vinho[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router,
+    private servicePedido: PedidoService,
     private serviceVinho: VinhoService,
-    private serviceCarrinho: CarrinhoService,
-    private servicePedido: PedidoService
+    private serviceCarrinho: CarrinhoService
   ) { }
 
   ngOnInit() {
-    this.listarVinhos();
     this.aplicarValidadores();
+    this.listarVinhos();
   }
 
   private aplicarValidadores() {
     this.cadastro = this.formBuilder.group({
       quantidade: ['', Validators.required],
-      distancia: ['', Validators.required],
-      frete: ['', Validators.required],
-      vinhos: ['', Validators.required]
+      distancia: ['', Validators.required]
     });
   }
 
   listarVinhos() {
-    //this.vinhos = this.serviceCarrinho.vinhos;
-    console.log(this.vinhos);
+    this.vinhos = JSON.parse(localStorage.getItem(this.key));
   }
 
   calcularKilos(vinhos) {
@@ -68,28 +66,19 @@ export class CarrinhoComponent implements OnInit {
   removerVinhoPedido(vinho) {
     if (this.serviceCarrinho.removerVinhoDoCarrinho(vinho)) {
       console.log("Vinho removido do Carrinho com sucesso!", 3000, "green");
+      this.listarVinhos();
     } else {
       console.log("Erro ao remover Vinho do Carrinho de Compras");
     }
   }
 
   cadastrar() {
-    this.peso = this.calcularKilos(this.serviceCarrinho.vinhos);
-    this.frete = this.calcularTotalFrete(this.peso);
+    //this.peso = this.calcularKilos(this.serviceCarrinho.vinhos);
+    //this.frete = this.calcularTotalFrete(this.peso);
 
-    this.pedido.frete = this.frete;
-    this.pedido.vinhos = this.serviceCarrinho.vinhos;
+    //this.pedido.frete = this.frete;
+    //this.pedido.vinhos = this.serviceCarrinho.vinhos;
 
-    this.servicePedido.cadastrarPedido(this.pedido).subscribe(
-      res => {
-        this.pedido = new Pedido();
-        this.peso = 0;
-        this.frete = 0;
-        this.vinhos = [];
-        console.log("Pedido cadastrado com sucesso!", 3000, "green");
-        this.router.navigate(['pedido/listar']);
-      },
-      err => console.log("Ocorreu um erro ao cadastrar o Pedido. Tente novamente mais tarde.", 3000, "red")
-    );
+
   }
 }

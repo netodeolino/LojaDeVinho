@@ -12,8 +12,8 @@ import { PedidoService } from './../pedido/pedido.service';
 @NgModule({
   imports: [
     CommonModule,
-    ReactiveFormsModule,
     FormsModule,
+    ReactiveFormsModule,
     CarrinhoRoutingModule
   ],
   declarations: [

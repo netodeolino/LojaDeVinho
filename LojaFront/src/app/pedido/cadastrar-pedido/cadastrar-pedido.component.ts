@@ -27,7 +27,7 @@ export class CadastrarPedidoComponent implements OnInit {
     private router: Router,
     private servicePedido: PedidoService,
     private serviceVinho: VinhoService,
-    private carrinhoService: CarrinhoService
+    private serviceCarrinho: CarrinhoService
   ) { }
 
   ngOnInit() {
@@ -45,12 +45,13 @@ export class CadastrarPedidoComponent implements OnInit {
   }
 
   cadastrar() {
-    this.peso = this.calcularKilos(this.carrinhoService.vinhos);
-    this.frete = this.calcularTotalFrete(this.peso);
+    //this.peso = this.calcularKilos(this.serviceCarrinho.vinhos);
+    //this.frete = this.calcularTotalFrete(this.peso);
 
-    this.pedido.frete = this.frete;
-    this.pedido.vinhos = this.carrinhoService.vinhos;
+    //this.pedido.frete = this.frete;
+    //this.pedido.vinhos = this.serviceCarrinho.vinhos;
 
+/*
     this.servicePedido.cadastrarPedido(this.pedido).subscribe(
       res => {
         this.pedido = new Pedido();
@@ -61,6 +62,7 @@ export class CadastrarPedidoComponent implements OnInit {
       },
       err => console.log("Ocorreu um erro ao adicionar o Pedido. Tente novamente mais tarde.", 3000, "red")
     );
+*/
   }
 
   listarVinhos() {
@@ -74,7 +76,7 @@ export class CadastrarPedidoComponent implements OnInit {
   }
 
   adicionarVinhoPedido(vinho) {
-    if (this.carrinhoService.adicionarVinhoNoCarrinho(vinho)) {
+    if (this.serviceCarrinho.adicionarVinhoNoCarrinho(vinho)) {
       console.log("Vinho adicionado ao Carrinho com sucesso!", 3000, "green");
     } else {
       console.log("Erro ao adicionar Vinho no Carrinho de Compras");
@@ -82,7 +84,7 @@ export class CadastrarPedidoComponent implements OnInit {
   }
 
   removerVinhoPedido(vinho) {
-    if (this.carrinhoService.removerVinhoDoCarrinho(vinho)) {
+    if (this.serviceCarrinho.removerVinhoDoCarrinho(vinho)) {
       console.log("Vinho removido do Carrinho com sucesso!", 3000, "green");
     } else {
       console.log("Erro ao remover Vinho do Carrinho de Compras");
