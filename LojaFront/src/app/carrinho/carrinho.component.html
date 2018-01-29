@@ -1,0 +1,42 @@
+<h2>Cadastrar Pedido</h2>
+<div>
+  <h3>Vinhos no Carrinho</h3>
+  <table>
+    <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Tipo</th>
+      <th>Peso</th>
+      <th>Remover do carrinho</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let vinho of vinhos">
+      <td>{{ vinho.nome }}</td>
+      <td>{{ vinho.tipo }}</td>
+      <td>{{ vinho.peso }}</td>
+      <td class="width: 84px;">
+        <button (click)="removerVinhoDoCarrinho(vinho)">Remover</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<form [formGroup]="cadastro">
+  <div>
+    <div>
+      <label for="quantidade">Quantidade</label>
+      <input id="quantidade" type="number" name="quantidade" formControlName="quantidade" [(ngModel)]="pedido.quantidade">
+    </div>
+    <div>
+      <label for="distancia">Distância</label>
+      <input id="distancia" type="number" name="distancia" formControlName="distancia" [(ngModel)]="pedido.distancia">
+    </div>
+    <div>
+      <button [class.disabled]="cadastro.invalid" (click)="cadastrar()">
+        Finalizar Pedido
+      </button>
+    </div>
+  </div>
+</form>

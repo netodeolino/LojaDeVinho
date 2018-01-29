@@ -7,6 +7,8 @@ import { DashboardRoutingModule } from './dashboard.routing.module';
 import { VinhoService } from './../vinho/vinho.service';
 import { CarrinhoService } from './../carrinho.service';
 
+import { Globals } from './../global';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -20,7 +22,8 @@ import { CarrinhoService } from './../carrinho.service';
   ],
   providers: [
     VinhoService,
-    CarrinhoService
+    CarrinhoService,
+    Globals
   ]
 })
 export class DashboardModule { }

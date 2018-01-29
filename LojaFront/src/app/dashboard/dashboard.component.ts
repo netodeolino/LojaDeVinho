@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private serviceVinho: VinhoService,
-    private carrinhoService: CarrinhoService
+    private serviceCarrinho: CarrinhoService
   ) { }
 
   ngOnInit() {
@@ -35,7 +35,7 @@ export class DashboardComponent implements OnInit {
   }
 
   adicionarVinhoPedido(vinho) {
-    if (this.carrinhoService.adicionarVinhoNoCarrinho(vinho)) {
+    if (this.serviceCarrinho.adicionarVinhoNoCarrinho(vinho)) {
       console.log("Vinho adicionado ao Carrinho com sucesso!", 3000, "green");
     } else {
       console.log("Erro ao adicionar Vinho no Carrinho de Compras");
@@ -43,7 +43,7 @@ export class DashboardComponent implements OnInit {
   }
 
   removerVinhoPedido(vinho) {
-    if (this.carrinhoService.removerVinhoDoCarrinho(vinho)) {
+    if (this.serviceCarrinho.removerVinhoDoCarrinho(vinho)) {
       console.log("Vinho removido do Carrinho com sucesso!", 3000, "green");
     } else {
       console.log("Erro ao remover Vinho do Carrinho de Compras");

@@ -20,4 +20,8 @@ export class CarrinhoService {
     this.vinhos.splice(this.vinhos.indexOf(vinho), 1);
     return true;
   }
+
+  flushCart() {
+    this.vinhos = []
+  }
 }

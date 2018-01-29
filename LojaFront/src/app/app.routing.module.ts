@@ -7,6 +7,10 @@ const appRoutes: Routes = [
         loadChildren: 'app/dashboard/dashboard.module#DashboardModule'
     },
     {
+        path: 'carrinho',
+        loadChildren: 'app/carrinho/carrinho.module#CarrinhoModule'
+    },
+    {
         path: 'vinho',
         loadChildren: 'app/vinho/vinho.module#VinhoModule'
     },
