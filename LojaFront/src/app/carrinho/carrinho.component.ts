@@ -26,6 +26,7 @@ export class CarrinhoComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private router: Router,
     private servicePedido: PedidoService,
     private serviceVinho: VinhoService,
     private serviceCarrinho: CarrinhoService
@@ -73,12 +74,22 @@ export class CarrinhoComponent implements OnInit {
   }
 
   cadastrar() {
-    //this.peso = this.calcularKilos(this.serviceCarrinho.vinhos);
-    //this.frete = this.calcularTotalFrete(this.peso);
+    this.peso = this.calcularKilos(this.vinhos);
+    this.frete = this.calcularTotalFrete(this.peso);
 
-    //this.pedido.frete = this.frete;
-    //this.pedido.vinhos = this.serviceCarrinho.vinhos;
+    this.pedido.frete = this.frete;
+    this.pedido.vinhos = this.vinhos;
 
-
+    this.servicePedido.cadastrarPedido(this.pedido).subscribe(
+      res => {
+        this.pedido = new Pedido();
+        this.peso = 0;
+        this.frete = 0;
+        this.serviceCarrinho.flushCart();
+        console.log("Pedido cadastrado com sucesso!", 3000, "green");
+        this.router.navigate(['pedido/listar']);
+      },
+      err => console.log("Ocorreu um erro ao cadastrar Pedido. Tente novamente mais tarde.", 3000, "red")
+    );
   }
 }
