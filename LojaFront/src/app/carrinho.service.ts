@@ -10,9 +10,7 @@ export class CarrinhoService {
 
   adicionarVinhoNoCarrinho(vinho) {
     let vinhos = JSON.parse(localStorage.getItem(this.key));
-    //console.log(vinhos);
-    //console.log(vinhos.indexOf(vinho));
-    //console.log(vinhos.find(item => item.id === vinho.id));
+
     if (!(vinhos.find(item => item.id === vinho.id))) {
       vinhos.push(vinho);
       localStorage.setItem(this.key, JSON.stringify(vinhos));
@@ -23,13 +21,16 @@ export class CarrinhoService {
 
   removerVinhoDoCarrinho(vinho) {
     let vinhos = JSON.parse(localStorage.getItem(this.key));
-    vinhos.splice(vinhos.indexOf(vinho), 1);
+    localStorage.removeItem(this.key);
+    
+    vinhos.splice(vinhos.findIndex(item => item.id === vinho.id), 1);
     localStorage.setItem(this.key, JSON.stringify(vinhos));
     return true;
   }
 
   flushCart() {
     let vinhos = JSON.parse(localStorage.getItem(this.key));
+
     vinhos = []
     localStorage.setItem(this.key, JSON.stringify(vinhos));
   }

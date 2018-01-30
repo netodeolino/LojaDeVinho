@@ -28,7 +28,6 @@ export class DashboardComponent implements OnInit {
     this.serviceVinho.listarVinhos().subscribe(
       lista => {
         this.vinhos = lista;
-        console.log(lista);
       },
       error => console.log("Ocorreu um erro ao listar os Vinhos. Tente novamente mais tarde.", 3000, "red")
     );
