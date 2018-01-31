@@ -16,9 +16,7 @@ public class Pedido {
 	private Long id;
 	
 	@OneToMany
-	private List<Vinho> vinhos;
-	
-	private int quantidade;
+	private List<PedidoVinho> pedidovinhos;
 	
 	private Double distancia;
 	
@@ -32,20 +30,12 @@ public class Pedido {
 		this.id = id;
 	}
 
-	public List<Vinho> getVinhos() {
-		return vinhos;
+	public List<PedidoVinho> getPedidovinhos() {
+		return pedidovinhos;
 	}
 
-	public void setVinhos(List<Vinho> vinhos) {
-		this.vinhos = vinhos;
-	}
-
-	public int getQuantidade() {
-		return quantidade;
-	}
-
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
+	public void setPedidovinhos(List<PedidoVinho> pedidovinhos) {
+		this.pedidovinhos = pedidovinhos;
 	}
 
 	public Double getDistancia() {

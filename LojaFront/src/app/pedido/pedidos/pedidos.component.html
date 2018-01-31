@@ -2,14 +2,12 @@
 <table>
   <thead>
   <tr>
-    <th>Quantidade</th>
     <th>Distância</th>
     <th>Frete</th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let pedido of pedidos">
-    <td>{{ pedido.quantidade }}</td>
     <td>{{ pedido.distancia }}</td>
     <td>{{ pedido.frete }}</td>
   </tr>

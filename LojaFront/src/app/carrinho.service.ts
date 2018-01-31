@@ -10,7 +10,12 @@ export class CarrinhoService {
 
   adicionarVinhoNoCarrinho(vinho) {
     let vinhos = JSON.parse(localStorage.getItem(this.key));
-
+    if (vinhos === null) {
+      let vinhos: Vinho[] = [];
+      vinhos.push(vinho);
+      localStorage.setItem(this.key, JSON.stringify(vinhos));
+      return true;
+    }
     if (!(vinhos.find(item => item.id === vinho.id))) {
       vinhos.push(vinho);
       localStorage.setItem(this.key, JSON.stringify(vinhos));
@@ -22,7 +27,7 @@ export class CarrinhoService {
   removerVinhoDoCarrinho(vinho) {
     let vinhos = JSON.parse(localStorage.getItem(this.key));
     localStorage.removeItem(this.key);
-    
+
     vinhos.splice(vinhos.findIndex(item => item.id === vinho.id), 1);
     localStorage.setItem(this.key, JSON.stringify(vinhos));
     return true;

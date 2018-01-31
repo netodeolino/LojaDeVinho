@@ -1,9 +1,8 @@
-import { Vinho } from './vinho';
+import { PedidoVinho } from './pedidovinho';
 
 export class Pedido {
     id: number;
-    quantidade: number;
     distancia: number;
     frete: number;
-    vinhos: Vinho[] = [];
+    pedidovinhos: PedidoVinho[] = [];
 }

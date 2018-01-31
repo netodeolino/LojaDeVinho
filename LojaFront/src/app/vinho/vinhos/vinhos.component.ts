@@ -22,7 +22,7 @@ export class VinhosComponent implements OnInit {
   }
 
   listar() {
-    this.service.listarTodosVinhos().subscribe(
+    this.service.listarVinhos().subscribe(
       lista => {
         this.vinhos = lista;
         console.log(lista);
