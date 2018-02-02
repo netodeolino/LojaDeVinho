@@ -12,9 +12,7 @@ export class VinhoService {
   private options: RequestOptions;
   vinho: Vinho;
 
-  constructor(private http: Http) { }
-
-  cadastrarVinho(vinho: Vinho): Observable<String> {
+  constructor(private http: Http) {
     let header = new Headers();
     header.append('Content-Type', 'application/json');
     header.append('Access-Control-Allow-Origin', '*');
@@ -23,7 +21,9 @@ export class VinhoService {
     header.append('Access-Control-Allow-Credentials', "true");
 
     this.options = new RequestOptions({ headers: header });
+  }
 
+  cadastrarVinho(vinho: Vinho): Observable<String> {
     return this.http.post(this.apiUrl + "vinho/cadastrar", vinho, this.options)
       .map(
         res => { return res.text(); }

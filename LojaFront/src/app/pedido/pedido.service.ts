@@ -12,9 +12,7 @@ export class PedidoService {
   private options: RequestOptions;
   pedido: Pedido;
 
-  constructor(private http: Http) { }
-
-  cadastrarPedido(pedido: Pedido): Observable<String> {
+  constructor(private http: Http) {
     let header = new Headers();
     header.append('Content-Type', 'application/json');
     header.append('Access-Control-Allow-Origin', '*');
@@ -23,7 +21,9 @@ export class PedidoService {
     header.append('Access-Control-Allow-Credentials', "true");
 
     this.options = new RequestOptions({ headers: header });
+  }
 
+  cadastrarPedido(pedido: Pedido): Observable<String> {
     return this.http.post(this.apiUrl + "pedido/cadastrar", pedido, this.options)
       .map(
         res => { return res.text(); }

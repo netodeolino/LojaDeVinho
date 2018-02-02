@@ -2,6 +2,7 @@ package com.vinho.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +16,7 @@ public class Pedido {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL)
 	private List<PedidoVinho> pedidovinhos;
 	
 	private Double distancia;
