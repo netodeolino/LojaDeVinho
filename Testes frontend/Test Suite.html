@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+	<title>Test Suite</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Cadastrar Vinho</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:4200/<datalist><option>http://localhost:4200/</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Cadastrar Vinho<datalist><option>link=Cadastrar Vinho</option><option>//a[contains(text(),'Cadastrar Vinho')]</option><option>//a[contains(@href, '/vinho/cadastrar')]</option><option>//li[2]/a</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>id=nome<datalist><option>id=nome</option><option>name=nome</option><option>css=#nome</option><option>//input[@id='nome']</option><option>//input</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=nome<datalist><option>id=nome</option><option>name=nome</option><option>css=#nome</option><option>//input[@id='nome']</option><option>//input</option></datalist></td><td>Vinho Teste</td>
+</tr>
+<tr><td>click</td><td>id=tipo<datalist><option>id=tipo</option><option>name=tipo</option><option>css=#tipo</option><option>//input[@id='tipo']</option><option>//div[2]/input</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=tipo<datalist><option>id=tipo</option><option>name=tipo</option><option>css=#tipo</option><option>//input[@id='tipo']</option><option>//div[2]/input</option></datalist></td><td>Teste</td>
+</tr>
+<tr><td>click</td><td>id=peso<datalist><option>id=peso</option><option>name=peso</option><option>css=#peso</option><option>//input[@id='peso']</option><option>//div[3]/input</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=peso<datalist><option>id=peso</option><option>name=peso</option><option>css=#peso</option><option>//input[@id='peso']</option><option>//div[3]/input</option></datalist></td><td>50</td>
+</tr>
+<tr><td>click</td><td>css=button.disabled<datalist><option>css=button.disabled</option><option>//button</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>//tr[6]/td<datalist><option>//tr[6]/td</option></datalist></td><td>Vinho Teste</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Selecionar Vinho e Cadastrar Pedido</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:4200/<datalist><option>http://localhost:4200/</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>css=button<datalist><option>css=button</option><option>//button</option></datalist></td><td>Adicionar ao carrinho</td>
+</tr>
+<tr><td>click</td><td>link=Carrinho<datalist><option>link=Carrinho</option><option>//a[contains(text(),'Carrinho')]</option><option>//a[contains(@href, '/carrinho')]</option><option>//li[5]/a</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>id=quantidade<datalist><option>id=quantidade</option><option>name=quantidade</option><option>css=#quantidade</option><option>//input[@id='quantidade']</option><option>//input</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=quantidade<datalist><option>id=quantidade</option><option>name=quantidade</option><option>css=#quantidade</option><option>//input[@id='quantidade']</option><option>//input</option></datalist></td><td>3</td>
+</tr>
+<tr><td>click</td><td>id=distancia<datalist><option>id=distancia</option><option>name=distancia</option><option>css=#distancia</option><option>//input[@id='distancia']</option><option>//div/input</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=distancia<datalist><option>id=distancia</option><option>name=distancia</option><option>css=#distancia</option><option>//input[@id='distancia']</option><option>//div/input</option></datalist></td><td>100</td>
+</tr>
+<tr><td>click</td><td>//div[2]/button<datalist><option>//div[2]/button</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>//tr[6]/td<datalist><option>//tr[6]/td</option></datalist></td><td>100</td>
+</tr>
+</tbody></table>
+</body>
+</html>
