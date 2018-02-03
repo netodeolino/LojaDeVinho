@@ -29,7 +29,6 @@ public class PedidoController {
 	
 	@PostMapping(path="/cadastrar")
 	public String salvar(@RequestBody Pedido pedido){
-		
 		List<PedidoVinho> pedidoVinhos = new ArrayList<PedidoVinho>();
 		
 		for (PedidoVinho pedidoVinho : pedido.getPedidovinhos()) {
@@ -37,6 +36,11 @@ public class PedidoController {
 			pedidoVinhos.add(pedidoVinhoSalvo);
 		}
 		pedido.setPedidovinhos(pedidoVinhos);
+		
+		Double peso = calcularQuilos(pedido.getPedidovinhos());
+		Double frete = calcularTotalFrete(pedido, peso);
+		pedido.setFrete(frete);
+		
 		pedidoService.salvar(pedido);
 		return "sucesso";
 	}
@@ -61,5 +65,20 @@ public class PedidoController {
 	public String remover(Long id) {
 		pedidoService.excluir(id);
 		return "sucesso";
+	}
+	
+	private Double calcularQuilos(List<PedidoVinho> pedidoVinhos) {
+		Double quilos = 0.0;
+		for (PedidoVinho pedidoVinho : pedidoVinhos) {
+			quilos += (pedidoVinho.getVinho().getPeso() * pedidoVinho.getQuantidade());
+		}
+		return quilos;
+	}
+	
+	private Double calcularTotalFrete(Pedido pedido, Double quilos) {
+		if (pedido.getDistancia() <= 100) {
+			return quilos * 5;
+		}
+		return quilos * 5 * pedido.getDistancia() / 100; 
 	}
 }

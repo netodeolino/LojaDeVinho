@@ -23,8 +23,6 @@ export class CarrinhoComponent implements OnInit {
   pedido: Pedido = new Pedido();
   vinhos: Vinho[] = [];
   pedidoVinhos: PedidoVinho[] = [];
-  peso: number = 0;
-  frete: number = 0;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -63,22 +61,6 @@ export class CarrinhoComponent implements OnInit {
     }
   }
 
-  calcularKilos(pedidoVinhos) {
-    let kilos = 0;
-    for (let pedidovinho of pedidoVinhos) {
-      kilos += (pedidovinho.vinho.peso * pedidovinho.quantidade);
-    }
-    return kilos;
-  }
-
-  calcularTotalFrete(kilos) {
-    if (this.pedido.distancia <= 100) {
-      return kilos * 5;
-    } else {
-      return kilos * 5 * this.pedido.distancia / 100;
-    }
-  }
-
   removerVinhoPedido(pedidoVinho) {
     if (this.serviceCarrinho.removerVinhoDoCarrinho(pedidoVinho.vinho)) {
       console.log("Vinho removido do Carrinho com sucesso!", 3000, "green");
@@ -90,17 +72,11 @@ export class CarrinhoComponent implements OnInit {
   }
 
   cadastrar() {
-    this.peso = this.calcularKilos(this.pedidoVinhos);
-    this.frete = this.calcularTotalFrete(this.peso);
-
-    this.pedido.frete = this.frete;
     this.pedido.pedidovinhos = this.pedidoVinhos;
 
     this.servicePedido.cadastrarPedido(this.pedido).subscribe(
       res => {
         this.pedido = new Pedido();
-        this.peso = 0;
-        this.frete = 0;
         this.serviceCarrinho.flushCart();
         console.log("Pedido cadastrado com sucesso!", 3000, "green");
         this.router.navigate(['pedido/listar']);
