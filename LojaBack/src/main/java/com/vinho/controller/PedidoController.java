@@ -28,7 +28,7 @@ public class PedidoController {
 	private PedidoVinhoService pedidoVinhoService;
 	
 	@PostMapping(path="/cadastrar")
-	public String salvar(@RequestBody Pedido pedido){
+	public Pedido salvar(@RequestBody Pedido pedido){
 		List<PedidoVinho> pedidoVinhos = new ArrayList<PedidoVinho>();
 		
 		for (PedidoVinho pedidoVinho : pedido.getPedidovinhos()) {
@@ -41,8 +41,8 @@ public class PedidoController {
 		Double frete = calcularTotalFrete(pedido, peso);
 		pedido.setFrete(frete);
 		
-		pedidoService.salvar(pedido);
-		return "sucesso";
+		Pedido pedidoSalvo = pedidoService.salvar(pedido);
+		return pedidoSalvo;
 	}
 	
 	@GetMapping(path="/listar")

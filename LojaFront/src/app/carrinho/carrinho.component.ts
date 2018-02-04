@@ -79,6 +79,7 @@ export class CarrinhoComponent implements OnInit {
         this.pedido = new Pedido();
         this.serviceCarrinho.flushCart();
         console.log("Pedido cadastrado com sucesso!", 3000, "green");
+        console.log("Valor total da compra: "+res.frete);
         this.router.navigate(['pedido/listar']);
       },
       err => console.log("Ocorreu um erro ao cadastrar Pedido. Tente novamente mais tarde.", 3000, "red")

@@ -23,10 +23,10 @@ export class PedidoService {
     this.options = new RequestOptions({ headers: header });
   }
 
-  cadastrarPedido(pedido: Pedido): Observable<String> {
+  cadastrarPedido(pedido: Pedido): Observable<Pedido> {
     return this.http.post(this.apiUrl + "pedido/cadastrar", pedido, this.options)
       .map(
-        res => { return res.text(); }
+        res => { return res.json(); }
       );
   }
 
